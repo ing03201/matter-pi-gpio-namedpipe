@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 #
 #    Copyright (c) 2020 Project CHIP Authors
@@ -16,7 +16,10 @@
 #    limitations under the License.
 #
 
+git pull
+git submodule update --init
 set -e
+
 
 # Build script for GN examples GitHub workflow.
 CHIPTOOL_DIR="./third_party/connectedhomeip"

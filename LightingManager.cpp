@@ -28,13 +28,21 @@
 
 LightingManager LightingManager::sLight;
 
-#define GPIO "GPIO"
-static int redGpio = 7;
-static int greenGpio = 0;
-static int blueGpio = 2;
+static int redGpio = 0;
+static int greenGpio = 2;
+static int blueGpio = 3;
 CHIP_ERROR LightingManager::Init()
 {
-    mState = kState_On;
+
+    ChipLogProgress(AppServer, "Using GPIO %s", envGPIO);
+    wiringPiSetupGpio();
+    pinMode(redGpio, OUTPUT);
+    pinMode(greenGpio, OUTPUT);
+    pinMode(blueGpio, OUTPUT);
+
+    analogWrite(redGpio, 0);
+
+    mState = kState_Off;
     return CHIP_NO_ERROR;
 }
 

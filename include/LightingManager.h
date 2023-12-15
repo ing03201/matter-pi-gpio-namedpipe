@@ -50,11 +50,13 @@ public:
     using LightingCallback_fn = std::function<void(Action_t)>;
 
     void SetCallbacks(LightingCallback_fn aActionInitiated_CB, LightingCallback_fn aActionCompleted_CB);
+    void pushButton();
+    void longPressButton();
 
 private:
     friend LightingManager & LightingMgr(void);
     State_t mState;
-
+    
     LightingCallback_fn mActionInitiated_CB;
     LightingCallback_fn mActionCompleted_CB;
 
